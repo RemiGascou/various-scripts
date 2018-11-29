@@ -1,0 +1,90 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+'.source.python':
+
+  'Get Set':
+    'prefix': 'gs'
+    'body': """
+       def get_$1 (self):
+           return self.$1
+
+       def set_$1 (self, $1):
+           self.$1 = $1
+       $2
+    """
+
+  'Python File Header':
+    'prefix': 'fhead'
+    'body': "# -*- coding: utf-8 -*-"
+
+  'Boxed Var':
+    'prefix': 'bvar'
+    'body': "max(min($1, $2), $3)$4"
+
+# Functions
+  'Function':
+    'prefix': 'def'
+    'body':'''
+    def ${1:new_function}(${2:arg}):
+        """Documentation for ${1:new_function}"""
+        $4
+        return $5
+    '''
+
+  'QT5 Window Handler':
+    'prefix': 'wh'
+    'body':'''
+    def start_${1:newWindow}(self):
+        self.w${1:newWindow} = ${1:newWindow}(self)
+        self.w${1:newWindow}.show()
+    $2
+    '''
+
+#Comments
+#Generator : a = "# *" + "Get Set".center(75, "-") + " *"
+
+  '# COMHEAD Window Handler':
+    'prefix': '#wh'
+    'body':'''# *------------------------------Windows Handlers----------------------------- *'''
+
+  '# COMHEAD Get Set':
+    'prefix': '#gs'
+    'body':'''# *----------------------------------Get Set---------------------------------- *'''
+
+'.source.java':
+
+  'Get Set':
+    'prefix': 'gs'
+    'body': """
+       public $1 get_$2(){
+           return this.$2
+       }
+       public void set_$2($1 $2){
+           this.$2 = $2
+       }
+       $3
+    """
+
+    '# COMHEAD Get Set':
+      'prefix': 'comgs'
+      'body':'''// *----------------------------------Get Set--------------------------------- *'''
