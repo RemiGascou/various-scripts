@@ -25,21 +25,65 @@
   'Get Set':
     'prefix': 'gs'
     'body': """
-       def get_$1 (self):
-           return self.$1
+        def get_$1 (self):
+            return self.$1
 
-       def set_$1 (self, $1):
-           self.$1 = $1
+        def set_$1 (self, $1):
+            if type(self.$1) == type($1):
+                self.$1 = $1
+            return self
        $2
     """
-
-  'Python File Header':
-    'prefix': 'fhead'
-    'body': "# -*- coding: utf-8 -*-"
 
   'Boxed Var':
     'prefix': 'bvar'
     'body': "max(min($1, $2), $3)$4"
+
+  'Python File Header':
+    'prefix': 'fh'
+    'body': """
+      #!/usr/bin/env python3
+      # -*- coding: utf-8 -*-
+      # File name          : $1
+      # Author             : Remi GASCOU
+      # Date created       : $2
+      # Date last modified : $2
+      # Python Version     : 3.*
+    """
+
+  'if main args':
+    'prefix': 'ifargs'
+    'body': """
+        import sys
+        if __name__ == '__main__':
+            if len(sys.argv) != 2:
+                print("Usage : python3 "+sys.argv[0]+" file")
+            else :
+                file = sys.argv[1]
+    """
+
+
+  'read-write file':
+    'prefix': 'drw'
+    'body': """
+        def readfile(file, binary=False):
+            if binary : b_opt="b"
+            else:       b_opt=""
+            f = open(file, "r"+b_opt)
+            data = f.readlines()
+            f.close()
+            return data
+
+        def writefile(file, data, binary=False):
+            if binary : b_opt="b"
+            else:       b_opt=""
+            f = open(file, "w"+b_opt)
+            for e in data:
+                f.write(e)
+            f.close()
+            return data
+    """
+
 
 # Functions
   'Function':
@@ -77,10 +121,10 @@
     'prefix': 'gs'
     'body': """
        public $1 get_$2(){
-           return this.$2
+           return this.$2;
        }
        public void set_$2($1 $2){
-           this.$2 = $2
+           this.$2 = $2;
        }
        $3
     """
