@@ -38,10 +38,10 @@ gitstatus () {
     cd ../
 }
 
-GIT_PROJECTS_PATH=/home/administrateur/Documents/git_projects
-
-for dir in `find ./ -maxdepth 1 -type d`; do
-    # echo -e "\x1b[1m$dir\x1b[0m"
-    #cd ${BASEPATH}/${dir:1}
-    gitstatus ${GIT_PROJECTS_PATH}/${dir:1}
-done
+# GIT_PROJECTS_PATH=/home/administrateur/Documents/git_projects
+#
+# for dir in `find ./ -maxdepth 1 -type d`; do
+#     # echo -e "\x1b[1m$dir\x1b[0m"
+#     #cd ${BASEPATH}/${dir:1}
+#     gitstatus ${GIT_PROJECTS_PATH}/${dir:1}
+# done
